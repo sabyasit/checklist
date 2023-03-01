@@ -1,0 +1,35 @@
+.tech-container {
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+.tech-container .tech-container-leftnemu {
+    width: 300px;
+    border: 1px solid #cdcaca;
+}
+
+.tech-container .tech-container-main {
+    width: 200px;
+    padding: 10px;
+    flex: 1;
+    border: 1px solid #cdcaca;
+}
+.tech-container .tech-container-leftnemu .tech-container-leftnemu-header {
+    background-color: #24292f;
+    padding: 5px 10px;
+    color: white;
+}
+
+.tech-container .tech-container-leftnemu .tech-container-leftnemu-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: solid 1px #cdcaca;
+}
+
+.tech-container .tech-container-leftnemu .tech-container-leftnemu-item:hover {
+    background-color: rgb(14, 115, 203);
+    color: white;
+
+}

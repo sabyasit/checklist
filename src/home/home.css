@@ -1,0 +1,27 @@
+.tech-card {
+    padding: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.tech-card > div {
+    border: solid 1px #cdcaca;
+    height: 100px;
+    width: 200px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tech-card > div:hover {
+    border: solid 1px gray;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.tech-card > div > img {
+    height: 70px;
+}
