@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './header.css'
 
 export default function Header() {
     const [path, setPath] = useState();
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         setPath(location.state);
@@ -13,10 +14,10 @@ export default function Header() {
     return (
         <>
             <div className="header">
-                Technology Checklist 
-                { !path ? null : (
-                        <span>{` > ${path}`}</span>
-                    ) 
+                <span style={{ cursor: "pointer" }} onClick={() => navigate('/')}>Technology Checklist</span>
+                {!path ? null : (
+                    <span>{` > ${path}`}</span>
+                )
                 }
             </div>
         </>

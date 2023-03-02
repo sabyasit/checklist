@@ -25,7 +25,6 @@ export default function AddCategory(props) {
                 <Modal.Body>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Category</Form.Label>
                             <Form.Control type="text" onChange={(e) => setCategory(e.target.value)} />
                         </Form.Group>
                     </Form>
