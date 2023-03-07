@@ -1,18 +1,18 @@
-import { doc, setDoc, set, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
-import db from '../firebase/firebase.js'
 import Modal from 'react-bootstrap/Modal';
+import db from '../firebase/firebase.js'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-export default function AddRationale(props) {
-    const [rationale, setRationale] = useState();
+export default function AddTech(props) {
+    const query = collection(db, 'techology');
 
-    const addRationale = async () => {
-        props.detail.item[props.item].rationale.push(rationale);
-        await updateDoc(doc(db, props.id, props.detail.id), {
-            item: props.detail.item
-        })
+    const [tech, setTech] = useState();
+
+    const addTech = async () => {
+        const docRef = doc(db, 'techology', tech);
+        await setDoc(docRef, { name: tech });
     }
     return (
         <>
@@ -20,17 +20,17 @@ export default function AddRationale(props) {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Rationale</Modal.Title>
+                    <Modal.Title>Add Technology</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group>
-                            <Form.Control as="textarea" rows={3} onChange={(e) => setRationale(e.target.value)} />
+                            <Form.Control type="text" onChange={(e) => setTech(e.target.value)} />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={() => addRationale()}>Save</Button>
+                    <Button variant="primary" onClick={() => addTech()}>Save</Button>
                 </Modal.Footer>
             </Modal>
         </>

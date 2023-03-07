@@ -3,31 +3,21 @@ import { collection, query, onSnapshot, where } from "firebase/firestore"
 import db from '../firebase/firebase';
 import './home.css';
 import { useNavigate } from "react-router-dom";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 export default function Home() {
     const [technoloy, setTechnoloy] = useState([]);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const taskRef = query(collection(db, 'technology'));
-        onSnapshot(taskRef, (snapshot) => {
-            setTechnoloy(snapshot.docs.map(x => {
-                return {
-                    id: x.id,
-                    name: x.data().name
-                }
-            }))
-        })
-    }, [])
+    const query = collection(db, 'techology');
+    const [docs, loading, error] = useCollectionData(query);
 
     return (
         <>
             <div className="tech-card">
-                {technoloy.map(name => (
-                    <div key={name.id} onClick={() => navigate(`/${name.name}`, { state: name.id })}>
-                        <img src={require(`../logo/${name.id}.svg`)} />
-                        <br></br>
-                        {name.id}
+                {loading && "Loading..."}
+                {docs?.map(doc => (
+                    <div key={doc.name} onClick={() => navigate(`/${doc.name}`, { state: { id: doc.name } })}>
+                        {doc.name}
                     </div>
                 ))}
             </div>

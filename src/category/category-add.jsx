@@ -9,10 +9,8 @@ export default function AddCategory(props) {
     const [category, setCategory] = useState();
 
     const addCategory = async () => {
-        await setDoc(doc(db, props.id, Date.now().toString()), {
-            name: category,
-            item: []
-        });
+        const docRef = doc(db, 'techology', props.id, 'children', category);
+        await setDoc(docRef, { name: category });
     }
     return (
         <>

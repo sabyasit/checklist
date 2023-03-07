@@ -12,15 +12,14 @@ export default function AddChecklist(props) {
     const [rationale, setRationale] = useState();
 
     const addChecklist = async () => {
-        props.detail.item.push({
-            checklist: checklist,
+        const id  = Date.now().toString();
+        const docRef = doc(db, 'techology', props.id, 'children', props.cat, 'children', id);
+        await setDoc(docRef, { 
+            name: checklist,
             code: [code],
             compliant: [compliant],
-            rationale: [rationale]
-        })
-        await setDoc(doc(db, props.id, props.detail.id), {
-            item: props.detail.item,
-            name: props.detail.name
+            rationale: [rationale],
+            id: id
         });
     }
     return (
